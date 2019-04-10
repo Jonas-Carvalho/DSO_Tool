@@ -1,0 +1,109 @@
+<html>
+<head>
+    <script type="text/javascript" src="eel.js"></script>
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans" rel="stylesheet">
+
+    <title>DSO Tool</title>
+    <meta name="author" content="	Innovation Team - DSO Tool: 
+									Jonas Carvalho Silva, Jonas.Carvalho@ibm.com
+									Renata Fulop,  rfulop@ibm.br.com
+									Leonardo Moura,
+									Luis Gustavo, 
+									Carolina Araguez, 
+									Vitor Burd Wajnberg, ">
+
+
+    <script type="text/javascript">
+
+        async function run() {
+            let region = document.getElementById('region_Option').value;
+			let tcv = document.getElementById('TCV_Input').value;
+			let term = document.getElementById('TERM_Input').value;
+			let net_Days = document.getElementById('NET_DAY_Input').value;
+			let RBD = document.getElementById('RBD_Input').value;
+			let date = document.getElementById('Date_Input').value;
+
+            let dso_IGF = document.getElementById('dso_IGF');
+
+            // Call into Python so we can access the file system
+            let avgMonthBill = await eel.parcelas_IBM_PRINT(tcv, term)();
+            avg_ibm_bill.innerHTML = avgMonthBill;
+			
+			let avg_IBM_DSO = await eel.tabela_Principal(tcv, term, net_Days, RBD, date, region)();
+            avg_ibm_dso.innerHTML = avg_IBM_DSO[0];
+			
+			let dsoIGF = await eel.tabela_Principal(tcv, term, net_Days, RBD, date, region)();
+            dso_IGF.innerHTML = dsoIGF[1];
+
+        }
+
+    </script>
+
+
+
+</head>
+
+<body>
+
+
+    <div class="banner">
+      <img src="images/igf_Logo.png" height="70px" width="80px" alt="IBM Global Financing" border="0">
+      <h1>IBM <b>Global Finance</b></h1>
+    </div>
+
+    <div class="left_Panel">
+
+
+        <h3>Region</h3>
+        <br>
+        <select id="region_Option">
+            <option disabled selected value="">Country</option>
+            <option value=BZR>BZR</option>
+            <option value=MEX>MEX</option>
+            <option value=SSA>SSA</option>
+        </select>
+        <br>
+        <h3>Contract Info.</h3>
+        <div class="text_Input">
+            <input type="number" min="0" class="text_Input" id="TCV_Input" name="TCV" placeholder="TCV">
+            <abbr title="Total Contract Value in dolar"><img src="images/info.png" height="18" width="18"></abbr>
+            <br>
+			<input type="text" class="text_Input" id="TERM_Input" name="TERM" placeholder="TERM">
+            <abbr title="TERM days"><img src="images/info.png" height="18" width="18"></abbr>
+            <br>
+            <input type="text" class="text_Input" id="NET_DAY_Input" name="NET_DAY" placeholder="NET DAY">
+            <abbr title="Net Day"><img src="images/info.png" height="18" width="18"></abbr>
+            <br>
+			<input type="number" min="0" class="text_Input" id="RBD_Input" name="RBD" placeholder="RBD">
+            <abbr title="RBD - percentual number between 0 and 1"><img src="images/info.png" height="18" width="18"></abbr>
+			<br>
+			<input class="text_Input" id="Date_Input" name="Date" placeholder="Start Date (mm-dd-yyyy)">
+            <abbr title="Which date does the contract begin"><img src="images/info.png" height="18" width="18"></abbr>
+			<br>
+        </div>
+
+        <button class="button" onclick='run()'>Ok</button>
+
+        <br>
+        <br>
+
+    </div>
+
+    <div class="right_Panel">
+		<h3 style="color:gray">Without IGF</h3>
+		<p id="AvgMONTH_Bill">Average Month Billing</p>
+		<div id="avg_ibm_bill">--</div>
+		<p id="AvgIBM_DSO">Average DSO</p>
+		<div id="avg_ibm_dso">--</div>
+		
+		<h3 style="font-weight:bold">With IGF™</h3>
+		<p id="average_DSO">Average DSO</p>
+		<div id="dso_IGF">--</div>
+    </div>
+
+
+</<body>
+
+</html>

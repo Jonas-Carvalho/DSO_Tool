@@ -1,0 +1,108 @@
+/*=======================================================
+					GLOBAL
+  ======================================================= */
+body{
+	width:95%;
+	margin:auto;
+	font-family: 'IBM Plex Sans', sans-serif;
+}
+#quarter_Option, #region_Option {
+  width: 160px;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #c6c3c3;
+  color: #696969;
+}
+
+#quarter_Option {
+  margin: 10px 0px 0px 0px;
+  padding: 10px 0px 10px 0px;
+}
+
+h3 {
+	font-size: 24px;
+	color:#4b8401;
+	padding: 30px 0px 0px 0px;
+}
+
+.banner {
+	top:0;
+	height:120px;
+	width:100%;
+	background-color:#4b8401;
+}
+.banner img {
+	float: left;
+	width: 90px;
+	height: 80px;
+	padding-top: 20px;
+	padding-left: 20px;
+}
+
+.banner h1 {
+	position: relative;
+	top: 50px;
+	left: 20px;
+	font-size: 28px;
+	color:white;
+}
+.left_Panel {
+	float:left;
+	width: 40%;
+	padding: 0px 0px 0px 20px;
+}
+.button {
+	border: none;
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	cursor: pointer;
+	background-color: #4b8401;
+	color: white;
+	padding: 8px 70px;
+	margin: 20px 0px 0px 0px;
+}
+
+.button:active {
+  background-color: #5fa800;
+  transform: translateY(4px);
+}
+
+#TCV_Input, #NET_DAY_Input, #Date_Input, #RBD_Input, #TERM_Input {
+	width: 170px;
+	padding: 5px 0px 10px 10px;
+	margin: 10px 0px 0px 0px;
+	border-radius: 4px;
+    border: 1px solid #c6c3c3;
+	font-size: 14px;
+
+}
+.text_Input {
+	padding: 0px 0px 0px 0px;
+}
+abbr:hover {
+	cursor: pointer;
+}
+.right_Panel {
+	float:relative;
+}
+#average_DSO {
+	padding: 30px 0px 0px 0px;
+}
+
+#AvgMONTH_Bill, #AvgIBM_DSO {
+	padding: 20px 0px 5px 0px;
+} 
+
+#dso_IGF {
+	padding: 10px 0px 0px 0px;
+	color: #4b8401;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
